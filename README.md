@@ -43,3 +43,30 @@ X = black_footed_albatross
 ```
 ## Step 6
 Specify which attributes are multi-valued. For single-valued attributes don't ask the user if there has been a "yes" answer to one of the attribute value, e.g. if there is a "yes" to "color:black?" in the "known" we shouldn't ask the user "color:white?".
+## Step 7
+Gives the user a list/menu of possible values for an attribute. The following dialogs demonstrate this feature:
+```Prolog
+?- bird(X).
+nostrils:external_tubular? yes.
+live:at_sea? yes.
+bill:hooked? yes.
+What is the value for size?
+[large, plump, medium, small]
+large
+wings:long_narrow? yes.
+color:white? yes.
+X = laysan_albatross
+```
+```Prolog
+?- bird(X).
+nostrils:external_tubular? no.
+feet:webbed? yes.
+bill:flat? yes.
+neck:long? yes.
+color:white? yes.
+What is the value for flight?
+[ponderous, agile, flap_glide]
+ponderous
+voice:muffled_musical_whistle? yes.
+X = whistling_swan
+```

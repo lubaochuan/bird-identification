@@ -89,7 +89,8 @@ region(south_east):-
 nostrils(X):- ask(nostrils, X).
 live(X):- ask(live, X).
 bill(X):- ask(bill, X).
-size(X):- ask(size, X).
+size(X):- menuask(size, X, [large, plump, medium, small]).
+flight(X):- menuask(flight, X, [ponderous, agile, flap_glide]).
 eats(X):- ask(eats, X).
 feet(X):- ask(feet, X).
 wings(X):- ask(wings, X).
@@ -98,7 +99,6 @@ color(X):- ask(color, X).
 voice(X):- ask(voice, X).
 
 % placeholders
-flight(_):- true.
 head(_):- true.
 season(_):- true.
 state(_):- true.
@@ -132,6 +132,22 @@ ask(A,V):-
   read(Y), % get the answer
   asserta(known(Y,A,V)), % remember it
   Y == yes. % succeed or fail
+
+menuask(A,V,MenuList):-
+  write('What is the value for '), write(A), write('?'), nl,
+  write(MenuList), nl,
+  read(X),
+  check_val(X,A,V, MenuList),
+  asserta(known(yes,A,X)),
+  X == V.
+
+check_val(X,_,_,MenuList):-
+  member(X,MenuList),
+  !. % stop looking
+
+check_val(X,A,V,MenuList):-
+  write(X), write(' is not a legal value, try again.'), nl,
+  menuask(A,V,MenuList).
 
 /** <examples> Your example queries go here, e.g.
 ?- bird(X).
