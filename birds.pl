@@ -1,3 +1,4 @@
+% rules
 bird(laysan_albatross):-
   family(albatross),
   color(white).
@@ -14,11 +15,38 @@ bird(trumpeter_swan):-
   family(swan),
   voice(loud_trumpeting).
 
-%placeholder
-voice(_):-
-  true.
+order(tubenose):-
+  nostrils(external_tubular),
+  live(at_sea),
+  bill(hooked).
 
-family(albatross).
+order(waterfowl):-
+  feet(webbed),
+  bill(flat).
+
+family(albatross):-
+  order(tubenose),
+  size(large),
+  wings(long_narrow).
+
+family(swan):-
+  order(waterfowl),
+  neck(long),
+  color(white),
+  flight(ponderous).
+
+% placeholders
+voice(_):- true.
+feet(_):- true.
+neck(_):- true.
+flight(_):- true.
+
+% facts
+nostrils(external_tubular).
+live(at_sea).
+bill(hooked).
+size(large).
+wings(long_narrow).
 color(dark).
 
 /** <examples> Your example queries go here, e.g.
