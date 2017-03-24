@@ -70,3 +70,5 @@ ponderous
 voice:muffled_musical_whistle? yes.
 X = whistling_swan
 ```
+## Step 8
+Make the shell generic so that it can be used with any other knowledge base.

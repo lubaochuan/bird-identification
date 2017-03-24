@@ -108,7 +108,7 @@ cheek(_):- true.
 multivalued(voice).
 multivalued(feed).
 
-% interface
+% shell
 :- dynamic known/3.
 
 ask(A,V):-
@@ -149,7 +149,19 @@ check_val(X,A,V,MenuList):-
   write(X), write(' is not a legal value, try again.'), nl,
   menuask(A,V,MenuList).
 
+top_goal(X):-
+  bird(X).
+
+solve:-
+  retractall(known),
+  top_goal(X),
+  write('The answer is '), write(X), nl.
+
+solve:-
+  write('No answer found.'), nl.
+
 /** <examples> Your example queries go here, e.g.
 ?- bird(X).
 X = black_footed_albatross
+?- solve.
 */
