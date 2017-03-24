@@ -28,3 +28,16 @@ wings: long_narrow? yes.
 color: white? yes.
 X = laysan_albatross
 ```
+## Step 5
+Remember answers using a dynamic known/3 so that the same questions will not be asked again. This dialog demonstrates this feature:
+```Prolog
+?- bird(X).
+nostrils:external_tubular? yes.
+live:at_sea? yes.
+bill:hooked? yes.
+size:large? yes.
+wings:long_narrow? yes.
+color:white? no.
+color:dark? yes.
+X = black_footed_albatross
+```

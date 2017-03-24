@@ -106,10 +106,22 @@ province(_):- true.
 cheek(_):- true.
 
 % interface
-ask(Attr, Val):-
-  write(Attr:Val),
-  write('? '),
-  read(yes).
+:- dynamic known/3.
+
+ask(A,V):-
+  known(yes,A,V), % succeed if true
+  !. % stop looking
+
+ask(A,V):-
+  known(_,A,V), % fail if false
+  !, fail.
+
+ask(A,V):-
+  write(A:V), % ask user
+  write('? : '),
+  read(Y), % get the answer
+  asserta(known(Y,A,V)), % remember it
+  Y == yes. % succeed or fail
 
 /** <examples> Your example queries go here, e.g.
 ?- bird(X).
