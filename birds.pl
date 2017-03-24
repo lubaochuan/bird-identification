@@ -85,10 +85,19 @@ region(south_east):-
   state(X),
   member(X, [florida, mississippi, etc]).
 
+% facts
+nostrils(X):- ask(nostrils, X).
+live(X):- ask(live, X).
+bill(X):- ask(bill, X).
+size(X):- ask(size, X).
+eats(X):- ask(eats, X).
+feet(X):- ask(feet, X).
+wings(X):- ask(wings, X).
+neck(X):- ask(neck, X).
+color(X):- ask(color, X).
+
 % placeholders
 voice(_):- true.
-feet(_):- true.
-neck(_):- true.
 flight(_):- true.
 head(_):- true.
 season(_):- true.
@@ -96,13 +105,11 @@ state(_):- true.
 province(_):- true.
 cheek(_):- true.
 
-% facts
-nostrils(external_tubular).
-live(at_sea).
-bill(hooked).
-size(large).
-wings(long_narrow).
-color(dark).
+% interface
+ask(Attr, Val):-
+  write(Attr:Val),
+  write('? '),
+  read(yes).
 
 /** <examples> Your example queries go here, e.g.
 ?- bird(X).
