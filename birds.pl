@@ -15,6 +15,30 @@ bird(trumpeter_swan):-
   family(swan),
   voice(loud_trumpeting).
 
+bird(mallard):-
+  family(duck),
+  voice(quack),
+  head(green).
+
+bird(mallard):-
+  family(duck),
+  voice(quack),
+  color(mottled_brown).
+
+bird(canada_goose):-
+  family(goose),
+  season(winter),
+  country(united_states),
+  head(black),
+  cheek(white).
+
+bird(canada_goose):-
+  family(goose),
+  season(summer),
+  country(canada),
+  head(black),
+  cheek(white).
+
 order(tubenose):-
   nostrils(external_tubular),
   live(at_sea),
@@ -35,11 +59,42 @@ family(swan):-
   color(white),
   flight(ponderous).
 
+country(united_states):-
+  region(mid_west).
+
+country(united_states):-
+  region(south_west).
+
+country(united_states):-
+  region(north_west).
+
+country(united_states):-
+  region(mid_atlantic).
+
+country(canada):-
+  province(ontario).
+
+country(canada):-
+  province(quebec).
+
+region(new_england):-
+  state(X),
+  member(X, [massachusetts, vermont, etc]).
+
+region(south_east):-
+  state(X),
+  member(X, [florida, mississippi, etc]).
+
 % placeholders
 voice(_):- true.
 feet(_):- true.
 neck(_):- true.
 flight(_):- true.
+head(_):- true.
+season(_):- true.
+state(_):- true.
+province(_):- true.
+cheek(_):- true.
 
 % facts
 nostrils(external_tubular).

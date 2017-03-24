@@ -11,3 +11,4 @@ Step 2: Include rules for identifying the family and the order of a bird, e.g al
 ?- bird(X).
 X = black_footed_albatross
 ```
+Step 3: Add additional rules. All such rules form the knowledge base of an expert system.
