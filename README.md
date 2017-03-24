@@ -41,3 +41,5 @@ color:white? no.
 color:dark? yes.
 X = black_footed_albatross
 ```
+## Step 6
+Specify which attributes are multi-valued. For single-valued attributes don't ask the user if there has been a "yes" answer to one of the attribute value, e.g. if there is a "yes" to "color:black?" in the "known" we shouldn't ask the user "color:white?".

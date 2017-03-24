@@ -95,9 +95,9 @@ feet(X):- ask(feet, X).
 wings(X):- ask(wings, X).
 neck(X):- ask(neck, X).
 color(X):- ask(color, X).
+voice(X):- ask(voice, X).
 
 % placeholders
-voice(_):- true.
 flight(_):- true.
 head(_):- true.
 season(_):- true.
@@ -105,8 +105,18 @@ state(_):- true.
 province(_):- true.
 cheek(_):- true.
 
+multivalued(voice).
+multivalued(feed).
+
 % interface
 :- dynamic known/3.
+
+ask(A,V):-
+  \+ multivalued(A),
+  known(yes,A,V2), % fail if there is already a value
+  V \== V2,        % for a single-valuded attribute: e.g.
+  !, fail.         % if the user answered yes to color:black?
+                   % don't ask color:white?
 
 ask(A,V):-
   known(yes,A,V), % succeed if true
